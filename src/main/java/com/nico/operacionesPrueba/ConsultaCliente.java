@@ -1,10 +1,12 @@
-package com.nico.conexionHibernate;
+package com.nico.operacionesPrueba;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import com.nico.conexionHibernate.Cliente;
 
 public class ConsultaCliente {
 
