@@ -1,10 +1,13 @@
 package com.nico.conexionHibernate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +27,10 @@ public class Cliente {
 
 	@Column(name = "direccion")
 	private String direccion;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id")
+	private DetalleCliente detalleCliente;
 
 	public Cliente() {
 
@@ -70,6 +77,14 @@ public class Cliente {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public DetalleCliente getDetalleCliente() {
+		return detalleCliente;
+	}
+
+	public void setDetalleCliente(DetalleCliente detalleCliente) {
+		this.detalleCliente = detalleCliente;
 	}
 
 }
