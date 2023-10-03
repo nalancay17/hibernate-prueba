@@ -1,10 +1,12 @@
 package com.nico.conexionHibernate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,9 @@ public class DetalleCliente {
 	@Column(name = "comentario")
 	private String comentario;
 
+	@OneToOne(mappedBy = "detalleCliente", cascade = CascadeType.ALL)
+	private Cliente cliente;
+
 	public DetalleCliente() {
 
 	}
@@ -33,6 +38,12 @@ public class DetalleCliente {
 		this.web = web;
 		this.telefono = telefono;
 		this.comentario = comentario;
+	}
+
+	@Override
+	public String toString() {
+		return "DetalleCliente [id=" + id + ", web=" + web + ", telefono=" + telefono + ", comentario=" + comentario
+				+ "]";
 	}
 
 	public int getId() {
@@ -65,6 +76,14 @@ public class DetalleCliente {
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 }
